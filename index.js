@@ -5,10 +5,12 @@ import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
 import verifyJWT from './middleware/auth.js';
 import orderRouter from './routes/orderRouter.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
-mongoose.connect("mongodb+srv://admin:123@cluster0.uw8dx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(
+mongoose.connect(process.env.MONGO_URL).then(
     ()=>{
         console.log("Connected to the db");
     }
@@ -16,10 +18,7 @@ mongoose.connect("mongodb+srv://admin:123@cluster0.uw8dx.mongodb.net/?retryWrite
 ()=>{
     console.log("Connectin failed");
 }
-)
-
-//mongodb+srv://admin:123@cluster0.uw8dx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-//mongodb+srv://chamaraofficial2001:3ACwiTzV5e7jO3UQ@cluster0.1z7if.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+);
 
 app.use(bodyParser.json());
 app.use(verifyJWT);
