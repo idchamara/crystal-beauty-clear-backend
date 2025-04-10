@@ -26,10 +26,10 @@ const productSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    image : {
+    images : {
         type : [String],
         required : true,
-        default : ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTikef76pBA_Wy2TeDOXhXFQSojlXcYxo3WbQ&s"]
+        default : ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyrVHW3ETfRAAtf780OQqLRYM6inchgfNgQg&s"]
     },
     stock : {
         type : Number,
