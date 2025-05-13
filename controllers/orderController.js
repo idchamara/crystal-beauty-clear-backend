@@ -120,3 +120,24 @@ export function getOrders(req,res){
         )
     }
 }
+
+export async function updateOrder(req,res){
+    try{
+        if(req.user == null){
+            res.status(401).jason({
+                message : "Unauthorized"
+            })
+            return;
+        }
+        const orderId = req.params.orderId;
+        const order = await Order.findOneAndUpdate({orderId : orderId},req.body);
+        res.json({
+            message : "Order updated successfully"
+        })
+
+    }catch(err){
+        res.status(500).json({
+            message : "Error in updating order"
+        })
+    }
+}
